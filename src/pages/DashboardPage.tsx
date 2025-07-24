@@ -9,6 +9,7 @@ import TacticalTracking from "../components/TacticalTracking";
 import SocialListening from "../components/SocialListening";
 import OperationProgress from "../components/OperationProgress";
 import OperationMetrics from "../components/OperationMetrics";
+import CircunscripcionMaps from "../components/CircunscripcionMaps";
 import AvisosTable from "../components/cochabamba/AvisosTable";
 import AdversariosTable from "../components/adversarios/AdversariosTable";
 
@@ -102,7 +103,7 @@ export default function DashboardPage() {
                     <TacticalTracking />
                   </div>
                   <div className="col-span-12 lg:col-span-6">
-                    <SocialListening />
+                    <CircunscripcionMaps />
                   </div>
                 </div>
 
@@ -110,6 +111,13 @@ export default function DashboardPage() {
                 <div className="grid grid-cols-12 gap-6">
                   <div className="col-span-12">
                     <CampaignProgress />
+                  </div>
+                </div>
+
+                {/* Social Listening Section */}
+                <div className="grid grid-cols-12 gap-6">
+                  <div className="col-span-12">
+                    <SocialListening />
                   </div>
                 </div>
 
