@@ -117,7 +117,7 @@ export default function CircunscripcionMaps() {
             <img
               src={currentMap.url}
               alt={currentMap.title}
-              className="w-full h-full object-cover rounded-lg transition-all duration-500 hover:scale-105"
+              className="w-full h-full object-cover rounded-lg"
               onLoad={(e) => {
                 // Hide loading placeholder when image loads
                 const target = e.target as HTMLImageElement;
@@ -157,18 +157,6 @@ export default function CircunscripcionMaps() {
           </div>
         )}
       </div>
-
-      {/* Resume auto-play button */}
-      {!isAutoPlaying && (
-        <div className="mt-4 text-center">
-          <button
-            onClick={() => setIsAutoPlaying(true)}
-            className="text-xs text-gray-400 hover:text-primary transition-colors duration-300"
-          >
-            Reanudar reproducción automática
-          </button>
-        </div>
-      )}
     </div>
   );
 }
