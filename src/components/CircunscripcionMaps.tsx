@@ -59,7 +59,7 @@ export default function CircunscripcionMaps() {
   const currentMap = CIRCUMSCRIPTION_MAPS[currentIndex];
 
   return (
-    <div className="glassmorphic-container p-5 h-[480px] overflow-hidden animate-scale-in">
+    <div className="glassmorphic-container p-3 h-[480px] overflow-hidden animate-scale-in">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent-teal/5 rounded-xl -z-10"></div>
       <div className="absolute inset-0 backdrop-blur-md rounded-xl -z-10"></div>
@@ -68,27 +68,23 @@ export default function CircunscripcionMaps() {
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-teal/10 rounded-full blur-3xl"></div>
 
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-lg font-semibold text-white text-neon relative">
-            MAPAS DE CIRCUNSCRIPCIÓN
-            <div className="absolute left-0 -bottom-2 h-0.5 w-16 bg-gradient-to-r from-primary via-accent-teal to-primary rounded-full"></div>
-          </h2>
-          <p className="text-sm text-gray-400 mt-2">{currentMap.title}</p>
-        </div>
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-base font-semibold text-white text-neon relative">
+          {currentMap.title}
+        </h2>
         
-        <div className="flex items-center gap-2">
-          <div className="bg-primary/10 p-2 rounded-lg">
-            <Map className="w-5 h-5 text-primary" />
+        <div className="flex items-center gap-3">
+          <div className="bg-primary/10 p-1.5 rounded-lg">
+            <Map className="w-4 h-4 text-primary" />
           </div>
-          <span className="text-sm text-gray-400">
+          <span className="text-lg font-bold text-primary">
             {currentIndex + 1} / {CIRCUMSCRIPTION_MAPS.length}
           </span>
         </div>
       </div>
 
       {/* Carousel Container */}
-      <div className="relative h-[350px] rounded-lg overflow-hidden group">
+      <div className="relative h-[420px] rounded-lg overflow-hidden group">
         {/* Background for image container */}
         <div className="absolute inset-0 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md"></div>
         
@@ -108,8 +104,8 @@ export default function CircunscripcionMaps() {
         </button>
 
         {/* Image Container */}
-        <div className="relative w-full h-full flex items-center justify-center p-2">
-          <div className="relative w-full h-full max-w-none">
+        <div className="relative w-full h-full flex items-center justify-center p-1">
+          <div className="relative w-full h-full">
             {/* Loading placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-lg animate-pulse"></div>
             
@@ -117,7 +113,7 @@ export default function CircunscripcionMaps() {
             <img
               src={currentMap.url}
               alt={currentMap.title}
-              className="w-full h-full object-contain rounded-lg"
+              className="w-full h-full object-contain"
               onLoad={(e) => {
                 // Hide loading placeholder when image loads
                 const target = e.target as HTMLImageElement;
