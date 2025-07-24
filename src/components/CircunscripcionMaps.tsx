@@ -108,8 +108,8 @@ export default function CircunscripcionMaps() {
         </button>
 
         {/* Image Container */}
-        <div className="relative w-full h-full flex items-center justify-center p-4">
-          <div className="relative w-full h-full">
+        <div className="relative w-full h-full flex items-center justify-center p-2">
+          <div className="relative w-full h-full max-w-none">
             {/* Loading placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-lg animate-pulse"></div>
             
@@ -117,7 +117,7 @@ export default function CircunscripcionMaps() {
             <img
               src={currentMap.url}
               alt={currentMap.title}
-              className="w-full h-full object-contain rounded-lg transition-all duration-500 hover:scale-105"
+              className="w-full h-full object-cover rounded-lg transition-all duration-500 hover:scale-105"
               onLoad={(e) => {
                 // Hide loading placeholder when image loads
                 const target = e.target as HTMLImageElement;
