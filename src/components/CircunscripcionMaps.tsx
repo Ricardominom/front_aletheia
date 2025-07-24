@@ -36,7 +36,7 @@ export default function CircunscripcionMaps() {
       setCurrentIndex((prevIndex) => 
         prevIndex === CIRCUMSCRIPTION_MAPS.length - 1 ? 0 : prevIndex + 1
       );
-    }, 10000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
@@ -56,10 +56,6 @@ export default function CircunscripcionMaps() {
     setIsAutoPlaying(false);
   };
 
-  const handleImageClick = () => {
-    setIsAutoPlaying(false);
-  };
-
   const currentMap = CIRCUMSCRIPTION_MAPS[currentIndex];
 
   return (
@@ -73,11 +69,11 @@ export default function CircunscripcionMaps() {
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-teal/10 rounded-full blur-3xl"></div>
 
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-base font-semibold text-white text-neon relative flex-1 text-center">
+        <h2 className="text-base font-semibold text-white text-neon relative">
           {currentMap.title}
         </h2>
         
-        <div className="flex items-center gap-3 absolute right-0">
+        <div className="flex items-center gap-3">
           <div className="bg-primary/10 p-1.5 rounded-lg">
             <Map className="w-4 h-4 text-primary" />
           </div>
@@ -117,24 +113,13 @@ export default function CircunscripcionMaps() {
             <img
               src={currentMap.url}
               alt={currentMap.title}
-              className="w-full h-full object-contain cursor-zoom-in hover:cursor-zoom-in transition-all duration-300"
-              onClick={handleImageClick}
+              className="w-full h-full object-contain"
               onLoad={(e) => {
                 // Hide loading placeholder when image loads
                 const target = e.target as HTMLImageElement;
                 const placeholder = target.previousElementSibling as HTMLElement;
                 if (placeholder) {
                   placeholder.style.display = 'none';
-                }
-              }}
-              onDoubleClick={(e) => {
-                const img = e.target as HTMLImageElement;
-                if (img.style.transform === 'scale(2)') {
-                  img.style.transform = 'scale(1)';
-                  img.style.cursor = 'zoom-in';
-                } else {
-                  img.style.transform = 'scale(2)';
-                  img.style.cursor = 'zoom-out';
                 }
               }}
             />
