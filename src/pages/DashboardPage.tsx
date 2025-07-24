@@ -98,18 +98,18 @@ export default function DashboardPage() {
 
                 {/* Campaign Progress Section */}
                 <div className="grid grid-cols-12 gap-6">
-                  <div className="col-span-12">
-                    <CampaignProgress />
-                  </div>
-                </div>
-
-                {/* Analytics Section - Equal columns for better balance */}
-                <div className="grid grid-cols-12 gap-6">
                   <div className="col-span-12 lg:col-span-6">
                     <TacticalTracking />
                   </div>
                   <div className="col-span-12 lg:col-span-6">
                     <SocialListening />
+                  </div>
+                </div>
+
+                {/* Campaign Progress Section */}
+                <div className="grid grid-cols-12 gap-6">
+                  <div className="col-span-12">
+                    <CampaignProgress />
                   </div>
                 </div>
 
