@@ -65,7 +65,7 @@ export default function CircunscripcionMaps() {
   };
 
   return (
-    <div className="glassmorphic-container p-2 h-[480px] overflow-hidden animate-scale-in">
+    <div className="glassmorphic-container p-1 h-[480px] overflow-hidden animate-scale-in">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent-teal/5 rounded-xl -z-10"></div>
       <div className="absolute inset-0 backdrop-blur-md rounded-xl -z-10"></div>
