@@ -70,45 +70,45 @@ export default function CircunscripcionMaps() {
 
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-base font-semibold text-white text-neon relative">
+          <h2 className="text-lg font-semibold text-white text-neon relative">
             MAPAS DE CIRCUNSCRIPCIÓN
-            <div className="absolute left-0 -bottom-1 h-0.5 w-12 bg-gradient-to-r from-primary via-accent-teal to-primary rounded-full"></div>
+            <div className="absolute left-0 -bottom-2 h-0.5 w-16 bg-gradient-to-r from-primary via-accent-teal to-primary rounded-full"></div>
           </h2>
-          <p className="text-xs text-gray-400 mt-1">{currentMap.title}</p>
+          <p className="text-sm text-gray-400 mt-2">{currentMap.title}</p>
         </div>
         
         <div className="flex items-center gap-2">
-          <div className="bg-primary/10 p-1.5 rounded-lg">
-            <Map className="w-4 h-4 text-primary" />
+          <div className="bg-primary/10 p-2 rounded-lg">
+            <Map className="w-5 h-5 text-primary" />
           </div>
-          <span className="text-xs text-gray-400">
+          <span className="text-sm text-gray-400">
             {currentIndex + 1} / {CIRCUMSCRIPTION_MAPS.length}
           </span>
         </div>
       </div>
 
       {/* Carousel Container */}
-      <div className="relative h-[400px] rounded-lg overflow-hidden group">
+      <div className="relative h-[350px] rounded-lg overflow-hidden group">
         {/* Background for image container */}
         <div className="absolute inset-0 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md"></div>
         
         {/* Navigation Buttons */}
         <button
           onClick={goToPrevious}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-1.5 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
         >
-          <ChevronLeft className="w-4 h-4 text-primary" />
+          <ChevronLeft className="w-5 h-5 text-primary" />
         </button>
         
         <button
           onClick={goToNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-1.5 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
         >
-          <ChevronRight className="w-4 h-4 text-primary" />
+          <ChevronRight className="w-5 h-5 text-primary" />
         </button>
 
         {/* Image Container */}
-        <div className="relative w-full h-full flex items-center justify-center p-1">
+        <div className="relative w-full h-full flex items-center justify-center p-2">
           <div className="relative w-full h-full max-w-none">
             {/* Loading placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-lg animate-pulse"></div>
@@ -134,14 +134,14 @@ export default function CircunscripcionMaps() {
         </div>
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
           {CIRCUMSCRIPTION_MAPS.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? 'bg-primary w-4'
+                  ? 'bg-primary w-6'
                   : 'bg-white/30 hover:bg-white/50'
               }`}
             />
@@ -150,9 +150,9 @@ export default function CircunscripcionMaps() {
 
         {/* Auto-play indicator */}
         {isAutoPlaying && (
-          <div className="absolute top-2 right-2 z-20">
-            <div className="bg-background/80 backdrop-blur-sm rounded-full p-1.5 border border-primary/20">
-              <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
+          <div className="absolute top-4 right-4 z-20">
+            <div className="bg-background/80 backdrop-blur-sm rounded-full p-2 border border-primary/20">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
             </div>
           </div>
         )}
