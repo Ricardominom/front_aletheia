@@ -90,7 +90,7 @@ export default function CircunscripcionMaps() {
       </div> 
 
       {/* Carousel Container with Zoom */}
-      <div className={`relative h-[440px] rounded-lg overflow-hidden group ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
+      <div className={`relative h-[460px] rounded-lg overflow-hidden group ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
         {/* Background for image container */}
         <div className="absolute inset-0 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md"></div>
         
