@@ -36,7 +36,7 @@ export default function CircunscripcionMaps() {
       setCurrentIndex((prevIndex) => 
         prevIndex === CIRCUMSCRIPTION_MAPS.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
