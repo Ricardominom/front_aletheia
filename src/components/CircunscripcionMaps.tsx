@@ -65,7 +65,7 @@ export default function CircunscripcionMaps() {
   };
 
   return (
-    <div className="glassmorphic-container p-3 h-[480px] overflow-hidden animate-scale-in">
+    <div className="glassmorphic-container p-2 h-[480px] overflow-hidden animate-scale-in">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent-teal/5 rounded-xl -z-10"></div>
       <div className="absolute inset-0 backdrop-blur-md rounded-xl -z-10"></div>
@@ -74,7 +74,7 @@ export default function CircunscripcionMaps() {
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-teal/10 rounded-full blur-3xl"></div>
 
-      <div className="flex items-center justify-center mb-3 relative">
+      <div className="flex items-center justify-center mb-2 relative">
         <h2 className="text-base font-semibold text-white text-neon text-center">
           Cochabamba - {currentMap.title}
         </h2>
@@ -90,27 +90,27 @@ export default function CircunscripcionMaps() {
       </div>
 
       {/* Carousel Container with Zoom */}
-      <div className={`relative h-[420px] rounded-lg overflow-hidden group ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
+      <div className={`relative h-[440px] rounded-lg overflow-hidden group ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
         {/* Background for image container */}
         <div className="absolute inset-0 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md"></div>
         
         {/* Navigation Buttons */}
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
         >
           <ChevronLeft className="w-5 h-5 text-primary" />
         </button>
         
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 bg-background/80 backdrop-blur-sm rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
         >
           <ChevronRight className="w-5 h-5 text-primary" />
         </button>
 
         {/* Image Container */}
-        <div className="relative w-full h-full flex items-center justify-center p-1">
+        <div className="relative w-full h-full flex items-center justify-center">
           <div 
             className={`relative w-full h-full transition-transform duration-300 ${isZoomed ? 'scale-150' : 'scale-100'}`}
             onClick={toggleZoom}
@@ -134,7 +134,7 @@ export default function CircunscripcionMaps() {
             />
 
             {/* Image overlay with gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent rounded-lg pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent rounded-lg pointer-events-none"></div>
           </div>
         </div>
 
