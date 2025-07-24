@@ -117,7 +117,7 @@ export default function CircunscripcionMaps() {
             <img
               src={currentMap.url}
               alt={currentMap.title}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-contain rounded-lg"
               onLoad={(e) => {
                 // Hide loading placeholder when image loads
                 const target = e.target as HTMLImageElement;
