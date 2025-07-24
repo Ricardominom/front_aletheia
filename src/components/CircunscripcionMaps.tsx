@@ -27,6 +27,7 @@ const CIRCUMSCRIPTION_MAPS = [
 export default function CircunscripcionMaps() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   // Auto-advance carousel
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function CircunscripcionMaps() {
       setCurrentIndex((prevIndex) => 
         prevIndex === CIRCUMSCRIPTION_MAPS.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000);
+    }, 12000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
@@ -58,6 +59,11 @@ export default function CircunscripcionMaps() {
 
   const currentMap = CIRCUMSCRIPTION_MAPS[currentIndex];
 
+  const toggleZoom = () => {
+    setIsZoomed(!isZoomed);
+    setIsAutoPlaying(false); // Pause auto-play when zooming
+  };
+
   return (
     <div className="glassmorphic-container p-3 h-[480px] overflow-hidden animate-scale-in">
       {/* Background effects */}
@@ -68,12 +74,12 @@ export default function CircunscripcionMaps() {
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-teal/10 rounded-full blur-3xl"></div>
 
-      <div className="flex items-center justify-between mb-3">
-        <h2 className="text-base font-semibold text-white text-neon relative">
-          {currentMap.title}
+      <div className="flex items-center justify-center mb-3 relative">
+        <h2 className="text-base font-semibold text-white text-neon text-center">
+          Cochabamba - {currentMap.title}
         </h2>
         
-        <div className="flex items-center gap-3">
+        <div className="absolute right-0 flex items-center gap-3">
           <div className="bg-primary/10 p-1.5 rounded-lg">
             <Map className="w-4 h-4 text-primary" />
           </div>
@@ -83,8 +89,8 @@ export default function CircunscripcionMaps() {
         </div>
       </div>
 
-      {/* Carousel Container */}
-      <div className="relative h-[420px] rounded-lg overflow-hidden group">
+      {/* Carousel Container with Zoom */}
+      <div className={`relative h-[420px] rounded-lg overflow-hidden group ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}>
         {/* Background for image container */}
         <div className="absolute inset-0 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-md"></div>
         
@@ -105,7 +111,10 @@ export default function CircunscripcionMaps() {
 
         {/* Image Container */}
         <div className="relative w-full h-full flex items-center justify-center p-1">
-          <div className="relative w-full h-full">
+          <div 
+            className={`relative w-full h-full transition-transform duration-300 ${isZoomed ? 'scale-150' : 'scale-100'}`}
+            onClick={toggleZoom}
+          >
             {/* Loading placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-lg animate-pulse"></div>
             
@@ -113,7 +122,7 @@ export default function CircunscripcionMaps() {
             <img
               src={currentMap.url}
               alt={currentMap.title}
-              className="w-full h-full object-contain"
+              className={`w-full h-full object-contain transition-all duration-300 ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
               onLoad={(e) => {
                 // Hide loading placeholder when image loads
                 const target = e.target as HTMLImageElement;
@@ -146,9 +155,18 @@ export default function CircunscripcionMaps() {
 
         {/* Auto-play indicator */}
         {isAutoPlaying && (
-          <div className="absolute top-4 right-4 z-20">
+          <div className="absolute top-4 left-4 z-20">
             <div className="bg-background/80 backdrop-blur-sm rounded-full p-2 border border-primary/20">
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            </div>
+          </div>
+        )}
+
+        {/* Zoom indicator */}
+        {isZoomed && (
+          <div className="absolute top-4 right-4 z-20">
+            <div className="bg-background/80 backdrop-blur-sm rounded-full p-2 border border-primary/20">
+              <span className="text-xs text-primary font-medium">Zoom</span>
             </div>
           </div>
         )}
