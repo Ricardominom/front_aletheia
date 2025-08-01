@@ -108,13 +108,6 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                {/* Campaign Progress Section */}
-                <div className="grid grid-cols-12 gap-6">
-                  <div className="col-span-12">
-                    <CampaignProgress />
-                  </div>
-                </div>
-
                 {/* Social Listening Section */}
                 <div className="grid grid-cols-12 gap-6">
                   <div className="col-span-12">
@@ -133,6 +126,13 @@ export default function DashboardPage() {
                     <div className="glassmorphic-container p-6 h-[450px] overflow-y-auto animate-scale-in">
                       <OperationMetrics />
                     </div>
+                  </div>
+                </div>
+
+                {/* Campaign Progress Section - Now at bottom */}
+                <div className="grid grid-cols-12 gap-6">
+                  <div className="col-span-12">
+                    <CampaignProgress />
                   </div>
                 </div>
               </>

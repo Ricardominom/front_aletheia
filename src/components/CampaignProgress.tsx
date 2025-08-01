@@ -40,7 +40,7 @@ export default function CampaignProgress() {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-accent-pink/0 via-accent-pink/30 to-accent-pink/0 blur-sm"></div>
       
       <h2 className="text-lg font-semibold text-white sticky top-0 z-10 text-neon mb-4 tracking-wider">
-        PROGRESO DE CAMPAÑAS
+        INDICADORES DE PROGRESO
       </h2>
       
       {/* Progress Indicators */}
