@@ -157,3 +157,5 @@ export default function StrategicContentCard() {
     </div>
   );
 }
+
+export default StrategicContentCard
