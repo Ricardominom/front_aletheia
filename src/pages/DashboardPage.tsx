@@ -87,7 +87,7 @@ export default function DashboardPage() {
                   {/* Secondary Indicators */}
                   <div className="col-span-12 lg:col-span-6">
                     <div className="h-[280px]">
-                      <SecondaryIndicators />
+                      <StrategicContentCard />
                     </div>
                   </div>
 
