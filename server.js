@@ -29,6 +29,12 @@ const mockData = {
     { campaign: 'C', progress: 45, delay: 25 },
     { campaign: 'D', progress: 70, delay: 20 },
     { campaign: 'E', progress: 55, delay: 30 }
+  ],
+  indicators: [
+    { type: "DE LA CAMPAÑA TRANSCURRIDO", value: 55.4 },
+    { type: "CRECIMIENTO PROMEDIO", value: 5.4 },
+    { type: "OBJETIVOS DE LA CAMPAÑA", value: 61.1 },
+    { type: "AVANCE GENERAL", value: 41.4 }
   ]
 };
 
@@ -43,6 +49,11 @@ app.get('/api/dashboard/campana', (req, res) => {
 
 app.get('/api/dashboard/operacion', (req, res) => {
   res.json(mockData.operacion);
+});
+
+// Indicators endpoint
+app.get('/api/dashboard/indicators', (req, res) => {
+  res.json(mockData.indicators);
 });
 
 // Health check endpoint
