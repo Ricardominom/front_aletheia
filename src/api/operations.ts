@@ -7,17 +7,19 @@ export const getOperationMetrics = async (): Promise<ApiResponse<OperationMetric
   } catch (networkError) {
     throw new Error('No se pudo conectar con el backend');
   }
+  
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  
   let data;
   try {
     data = await response.json();
   } catch (e) {
-    data = [];
+    console.error('Error parsing JSON:', e);
+    throw new Error('Respuesta inválida del servidor');
   }
-  if (!response.ok) {
-    // Muestra el error real del backend en consola
-    console.error('Backend error:', data?.error || response.statusText);
-    throw new Error(data?.error || 'Error al obtener datos de métricas');
-  }
+  
   return {
     data: Array.isArray(data) ? data : [],
     status: response.status,

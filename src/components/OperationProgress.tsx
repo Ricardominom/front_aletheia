@@ -6,15 +6,24 @@ export default function OperationProgress() {
 
   useEffect(() => {
       fetch('/api/dashboard/operacion')
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then(data => setOperationProgress(
-          data.map((a: any) => ({
+          Array.isArray(data) ? data.map((a: any) => ({
             ...a,
             progress: a.progress,
             delay: a.delay,
             campaign: a.campaign
-          }))
-        ));
+          })) : []
+        ))
+        .catch(error => {
+          console.error('Error fetching operation progress:', error);
+          setOperationProgress([]);
+        });
   }, []);
 
 

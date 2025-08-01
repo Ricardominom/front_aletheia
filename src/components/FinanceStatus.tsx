@@ -9,26 +9,40 @@ export default function FinanceStatus() {
 
   useEffect(() => {
       fetch('/api/avisos')
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then(data => setAvisos(
-          data.map((a: any) => ({
+          Array.isArray(data) ? data.map((a: any) => ({
             ...a,
             fechaCreacion: new Date(a.fechaCreacion),
-          }))
-        ));
+          })) : []
+        ))
+        .catch(error => {
+          console.error('Error fetching avisos:', error);
+          setAvisos([]);
+        });
   }, []);
   
     const handleAddAviso = async (nuevoAviso: { mensaje: string; fecha: string; hora: string }) => {
-      const response = await fetch('/api/avisos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(nuevoAviso),
-      });
-      if (response.ok) {
-        const aviso = await response.json();
-        setAvisos([{ ...aviso, fechaCreacion: new Date(aviso.fechaCreacion) }, ...avisos]);
-      } else {
-        alert('Error al guardar aviso');
+      try {
+        const response = await fetch('/api/avisos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(nuevoAviso),
+        });
+        if (response.ok) {
+          const aviso = await response.json();
+          setAvisos([{ ...aviso, fechaCreacion: new Date(aviso.fechaCreacion) }, ...avisos]);
+        } else {
+          alert('Error al guardar aviso');
+        }
+      } catch (error) {
+        console.error('Error saving aviso:', error);
+        alert('Error de conexión al guardar aviso');
       }
     };
 
