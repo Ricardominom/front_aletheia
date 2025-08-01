@@ -10,6 +10,7 @@ import SocialListening from "../components/SocialListening";
 import OperationProgress from "../components/OperationProgress";
 import OperationMetrics from "../components/OperationMetrics";
 import CircunscripcionMaps from "../components/CircunscripcionMaps";
+import StrategicContentCard from "../components/StrategicContentCard";
 import AvisosTable from "../components/cochabamba/AvisosTable";
 import AdversariosTable from "../components/adversarios/AdversariosTable";
 
