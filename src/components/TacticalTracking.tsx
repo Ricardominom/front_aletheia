@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,7 +11,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useTacticalData } from "../hooks/useTactical";
 import { formatPercentage, formatDate } from "../utils/data";
 
 ChartJS.register(
@@ -76,7 +76,18 @@ function MetricCard({ value, label, sublabel, trend, color }: MetricCardProps) {
 }
 
 export default function TacticalTracking() {
-  const { data: tacticalData, loading } = useTacticalData();
+  const [tacticalData, setTacticalData] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    fetch("/api/encuestas/tracking")
+      .then((res) => res.json())
+      .then((data) => {
+        setTacticalData(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   if (loading) {
     return (
@@ -333,14 +344,19 @@ export default function TacticalTracking() {
         <div className="absolute left-0 -bottom-2 h-0.5 w-16 bg-gradient-to-r from-accent-teal via-primary to-accent-pink rounded-full"></div>
       </h2>
 
-      <div className="grid grid-cols-4 gap-3">
-        <MetricCard
-          value={formatPercentage(latestPropio.percentage)}
-          label="INTENCIÓN DE VOTO"
-          sublabel="MARZO 2025"
-          trend={latestPropio.trend}
-          color="teal"
-        />
+      <div className="flex justify-start">
+        <div className="w-full max-w-xs">
+          <MetricCard
+            value={formatPercentage(latestPropio.percentage)}
+            label="INTENCIÓN DE VOTO"
+            sublabel="MARZO 2025"
+            trend={latestPropio.trend}
+            color="teal"
+          />
+        </div>
+      </div>
+
+      {/* Commented out cards as requested 
         <MetricCard
           value={"0"}
           label="VARIANZA EN INTENCIÓN DE VOTO"
@@ -362,7 +378,7 @@ export default function TacticalTracking() {
           trend={Number(saldoVariance) >= 0 ? "up" : "down"}
           color={Number(saldoVariance) >= 0 ? "teal" : "pink"}
         />
-      </div>
+      */}
 
       <div className="mt-4 h-[260px] relative">
         {/* Chart container with enhanced 3D effect */}
